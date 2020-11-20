@@ -8,7 +8,7 @@ class Stock extends Component {
   };
 
   componentDidMount() {
-    this.fetchStock();
+    // this.fetchStock();
     console.log('mounted')
   }
 
@@ -17,33 +17,13 @@ class Stock extends Component {
     console.log('updated')
   }
 
-  fetchStock =() => {
-    const pointerToThis = this;
-    let stockChartXValuesFunction = [];
-    let stockChartYValuesFunction = [];
-    const API_KEY = "TK2WTT1V16S5RE86";
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.ticker}&interval=5min&apikey=${API_KEY}`;
-    fetch(API_Call)
-      // .then((response) => response.json())
-      // .then((data) => stockChartXValuesFunction = data)
 
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data)
-        for (let key in data["Time Series (5min)"]) {
-          stockChartXValuesFunction.push(key);
-          stockChartYValuesFunction.push(
-            data["Time Series (5min)"][key]["1. open"]
-          );
-        }
-        
-        pointerToThis.setState({
-          stockChartXValues: stockChartXValuesFunction,
-          stockChartYValues: stockChartYValuesFunction,
-        });
-      });
+  color = () => {
+    if(this.props.stockChartYValues[0] > this.props.stockChartYValues[99]){
+      return {color : 'green'}
+    } else {
+      return {color: 'red'}
+    }
   }
   render() {
     return (
@@ -52,18 +32,18 @@ class Stock extends Component {
         <Plot
         data={[
             {
-                x: this.state.stockChartXValues,
-                y: this.state.stockChartYValues,
+                x: this.props.stockChartXValues,
+                y: this.props.stockChartYValues,
                 type : 'scatter',
                 mode: 'lines+markers',
-                marker: {color : 'red'},
+                marker: {color : 'lime'}
             },
             
         ]}
-        layout ={{width: 720, height: 440, title: this.props.ticker}}
+        //MAIN-SVG
+        layout ={{width: 900, height: 640, title: this.props.ticker}}
         />
-        <button width = "50px" onClick={this.fetchStock}>fetch stock</button>
-      <h5>Current price {this.state.stockChartYValues[0]}</h5>
+      <h5 className= "text-center">Current price {this.props.stockChartYValues[0]}</h5>
       </div>
     );
   }
