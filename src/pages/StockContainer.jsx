@@ -23,32 +23,30 @@ class StockContainer extends Component {
   };
 
   fetchStock = () => {
-    const pointerToThis = this;
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     const API_KEY = "TK2WTT1V16S5RE86";
     let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=5min&apikey=${API_KEY}`;
     fetch(API_Call)
-      .then(function (response) {
+      .then((response) => {
         return response.json();
       })
-      .then(function (data) {
+      .then((data) => {
         console.log(data);
         for (let key in data["Time Series (5min)"]) {
           stockChartXValuesFunction.push(key);
           stockChartYValuesFunction.push(
-            data["Time Series (5min)"][key]["1. open"]
+            parseFloat(data["Time Series (5min)"][key]["1. open"]).toFixed(2)
           );
         }
-        pointerToThis.setState({
+        this.setState({
           stockChartXValues: stockChartXValuesFunction,
           stockChartYValues: stockChartYValuesFunction,
         });
       });
   };
 
-  render() {
-    
+  render() {  
     return (
       <div>
         <Stock

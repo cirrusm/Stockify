@@ -26,7 +26,11 @@ class Stock extends Component {
     }
   }
   render() {
+    // let priceNow = this.props.stockChartYValues[0] ? this.props.stockChartYValues[0].toFixed(2) : ""
     let upper = this.props.ticker.toUpperCase()
+    let recentPrice = this.props.stockChartYValues[0]
+    let startingPrice = this.props.stockChartYValues[99]
+    let changeInPrice = parseFloat(recentPrice - startingPrice).toFixed(2)
     
     return (
       <div className ="container d-flex flex-column justify-content-center">
@@ -43,9 +47,10 @@ class Stock extends Component {
             
         ]}
         //MAIN-SVG IN CSS
-        layout ={{width: 900, height: 640, title: upper}}
+        layout ={{width: 900, height: 640, title: `${upper} \n ${recentPrice}`}}
         />
-      <h5 className= "text-center">Current price {this.props.stockChartYValues[0]}</h5>
+      <h5 className= "text-center">Current price {recentPrice} </h5>
+      <span>Change in last day {changeInPrice}</span>
       </div>
     );
   }
