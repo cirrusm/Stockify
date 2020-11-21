@@ -26,6 +26,8 @@ class Stock extends Component {
     }
   }
   render() {
+    let upper = this.props.ticker.toUpperCase()
+    
     return (
       <div className ="container d-flex flex-column justify-content-center">
         
@@ -36,12 +38,12 @@ class Stock extends Component {
                 y: this.props.stockChartYValues,
                 type : 'scatter',
                 mode: 'lines+markers',
-                marker: {color : 'lime'}
+                marker: this.color()
             },
             
         ]}
-        //MAIN-SVG
-        layout ={{width: 900, height: 640, title: this.props.ticker}}
+        //MAIN-SVG IN CSS
+        layout ={{width: 900, height: 640, title: upper}}
         />
       <h5 className= "text-center">Current price {this.props.stockChartYValues[0]}</h5>
       </div>

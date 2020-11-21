@@ -9,7 +9,6 @@ class StockContainer extends Component {
   };
   changeStock = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
     this.fetchStock();
   };
 
@@ -49,6 +48,7 @@ class StockContainer extends Component {
   };
 
   render() {
+    
     return (
       <div>
         <Stock
@@ -57,6 +57,7 @@ class StockContainer extends Component {
           stockChartYValues={this.state.stockChartYValues}
         />
         <form onSubmit={this.changeStock}>
+          <label htmlFor="stock"> View A Different Stock:  </label>
           <input onChange={this.handleChange} type="text" name="stock"></input>
           <input type="submit" />
         </form>
