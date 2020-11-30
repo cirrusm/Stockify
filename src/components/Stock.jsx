@@ -47,7 +47,7 @@ class Stock extends Component {
             
         ]}
         //MAIN-SVG IN CSS
-        layout ={{width: 450, height: 400, title: `<b>${upper}</b> \n ${recentPrice}`}}
+        layout ={{width: 350, height: 300, title: `<b>${upper}</b> \n ${recentPrice}`}}
         />
       <h5 className= "text-center">Current price {recentPrice} </h5>
       <span>Change in last day {changeInPrice}</span>

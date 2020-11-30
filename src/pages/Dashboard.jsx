@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StockContainer from "./StockContainer";
-import '../index.css'
+import StockCard from "../components/StockCard";
+import "../index.css";
 
 class Dashboard extends Component {
   state = {};
@@ -10,7 +11,7 @@ class Dashboard extends Component {
         <h1>SearchBar</h1>
         <div className="row"></div>
         <h1>Gainer Section</h1>
-        <div className="row">
+        <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
             <StockContainer />
@@ -24,7 +25,24 @@ class Dashboard extends Component {
             <StockContainer />
           </div>
         </div>
-        <div className="row"></div>
+        <h1>Most Popular Stocks today</h1>
+        <div className="row">
+          <div className="col-md-4 ">
+            <StockCard />
+            <StockCard />
+            <StockCard />
+          </div>
+          <div className="col-md-4">
+            <StockCard />
+            <StockCard />
+            <StockCard />
+          </div>
+          <div className="col-md-4">
+            <StockCard />
+            <StockCard />
+            <StockCard />
+          </div>
+        </div>
       </div>
       //     <div class="container">
       //     <div class="row">

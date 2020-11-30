@@ -48,7 +48,7 @@ class StockContainer extends Component {
 
   render() {  
     return (
-      <div>
+      <div className="chartcard">
         <Stock
           ticker={this.state.ticker}
           stockChartXValues={this.state.stockChartXValues}

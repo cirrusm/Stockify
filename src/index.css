@@ -1,3 +1,38 @@
 body {
-  background-color: rgb(10, 42, 78)
+  background-color: rgb(30, 43, 58);
+  color: #fff;
+}
+
+.stockcard {
+  
+  margin: 0 auto;
+  margin-right: 25px;
+  margin-top: 10px;
+  margin-left: 45px;
+  text-align: center;
+  height: 10vh;
+  background-color: rgba(31, 63, 99, .4);
+  display: flex;
+}
+
+.words {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.numbers {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.chartcard {
+  background-color: rgba(31, 63, 99, .4);
+  padding: 10px;
+  margin-left: 45px;
+  margin-right: 25px;
+}
+
+.graphcontainer {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
