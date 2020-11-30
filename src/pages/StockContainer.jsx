@@ -54,11 +54,11 @@ class StockContainer extends Component {
           stockChartXValues={this.state.stockChartXValues}
           stockChartYValues={this.state.stockChartYValues}
         />
-        <form onSubmit={this.changeStock}>
+        {/* <form onSubmit={this.changeStock}>
           <label htmlFor="stock"> View A Different Stock:  </label>
           <input onChange={this.handleChange} type="text" name="stock"></input>
           <input type="submit" />
-        </form>
+        </form> */}
       </div>
     );
   }
