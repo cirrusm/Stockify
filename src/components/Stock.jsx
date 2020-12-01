@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Plot from 'react-plotly.js'
+import Plot from "react-plotly.js";
+import { Link } from "react-router-dom";
 
 class Stock extends Component {
   state = {
@@ -7,50 +8,69 @@ class Stock extends Component {
     stockChartYValues: [],
   };
 
-  componentDidMount() {
-    // this.fetchStock();
-    console.log('mounted')
-  }
+  // componentDidMount() {
+  //   // this.fetchStock();
+  //   console.log("mounted");
+  // }
 
-  componentDidUpdate() {
-    
-    console.log('updated')
-  }
-
+  // componentDidUpdate() {
+  //   console.log("updated");
+  // }
 
   color = () => {
-    if(this.props.stockChartYValues[0] > this.props.stockChartYValues[99]){
-      return {color : 'green'}
+    if (this.props.stockChartYValues[0] > this.props.stockChartYValues[99]) {
+      return "green";
     } else {
-      return {color: 'red'}
+      return "red";
     }
-  }
+  };
   render() {
     // let priceNow = this.props.stockChartYValues[0] ? this.props.stockChartYValues[0].toFixed(2) : ""
-    let upper = this.props.ticker.toUpperCase()
-    let recentPrice = this.props.stockChartYValues[0]
-    let startingPrice = this.props.stockChartYValues[99]
-    let changeInPrice = parseFloat(recentPrice - startingPrice).toFixed(2)
-    
+    let upper = this.props.ticker.toUpperCase();
+    let recentPrice = this.props.stockChartYValues[0];
+    let startingPrice = this.props.stockChartYValues[99];
+    let changeInPrice = parseFloat(recentPrice - startingPrice).toFixed(2);
+
     return (
-      <div className ="container d-flex flex-column justify-content-center">
-        
+      <div className="container d-flex flex-column justify-content-center">
         <Plot
-        data={[
+          data={[
             {
-                x: this.props.stockChartXValues,
-                y: this.props.stockChartYValues,
-                type : 'scatter',
-                mode: 'lines+markers',
-                marker: this.color()
+              x: this.props.stockChartXValues,
+              y: this.props.stockChartYValues,
+              type: "scatter",
+              mode: "lines+markers",
+              marker: {
+                color: this.color(),
+                opacity: "0",
+              },
             },
-            
-        ]}
-        //MAIN-SVG IN CSS
-        layout ={{width: 350, height: 300, title: `<b>${upper}</b> \n ${recentPrice}`}}
+          ]}
+          //MAIN-SVG IN CSS
+          layout={{
+            width: 350,
+            height: 300,
+            font: {
+              color: "white",
+            },
+            xaxis: {
+              showticklabels: false,
+              ticks: "",
+              showgrid: false,
+            },
+            yaxis: {
+              showgrid: false,
+            },
+            paper_bgcolor: "rgba(31, 63, 99, 0)",
+            plot_bgcolor: "rgba(31, 63, 99, 0)",
+            title: `<b>${upper}</b> \n ${recentPrice}`,
+          }}
         />
-      <h5 className= "text-center">Current price {recentPrice} </h5>
-      <span>Change in last day {changeInPrice}</span>
+        <Link to="/stocks/show" className="btn btn-primary stockbutton">
+          View
+        </Link>
+        {/* <h5 className="text-center">Current price {recentPrice} </h5>
+        <span>Change in last day {changeInPrice}</span> */}
       </div>
     );
   }

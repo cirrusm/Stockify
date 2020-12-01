@@ -1,11 +1,31 @@
 import React, { Component } from "react";
-import StockContainer from "./StockContainer";
+import StockContainer from "../components/StockContainer";
 import StockCard from "../components/StockCard";
 import "../index.css";
 
 class Dashboard extends Component {
-  state = {};
+  state = {
+    gainer1: "",
+    gainer2: "",
+    gainer3: "",
+    popular1: "",
+    popular2: "",
+    popular3: "",
+    popular4: "",
+    popular5: "",
+    popular6: "",
+    popular7: "",
+    popular8: "",
+    popular9: "",
+  };
+
+  componentDidMount() {
+    console.log("hi");
+  }
+
+  //MAKE API CALL TO GET TOP 3 GAINERS AND TOP 10 POPULAR FROM IEX
   render() {
+    console.log("render");
     return (
       <div>
         <h1>SearchBar</h1>
@@ -14,19 +34,19 @@ class Dashboard extends Component {
         <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
-            <StockContainer />
+            <StockContainer ticker="" />
           </div>
           <div className="col-md-4">
             {" "}
-            <StockContainer />
+            <StockContainer ticker="" />
           </div>
           <div className="col-md-4">
             {" "}
-            <StockContainer />
+            <StockContainer ticker="" />
           </div>
         </div>
         <h1>Most Popular Stocks today</h1>
-        <div className="row">
+        <div className="row cardcontainer">
           <div className="col-md-4 ">
             <StockCard />
             <StockCard />
@@ -44,19 +64,6 @@ class Dashboard extends Component {
           </div>
         </div>
       </div>
-      //     <div class="container">
-      //     <div class="row">
-      //       <div class="col-sm">
-      //         One of three columns
-      //       </div>
-      //       <div class="col-sm">
-      //         One of three columns
-      //       </div>
-      //       <div class="col-sm">
-      //         One of three columns
-      //       </div>
-      //     </div>
-      //   </div>
     );
   }
 }

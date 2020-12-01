@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Stock from "../components/Stock";
+import Stock from "./Stock";
 
 class StockContainer extends Component {
   state = {
-    ticker: "aapl",
     stockChartXValues: [],
     stockChartYValues: [],
   };
@@ -16,6 +15,10 @@ class StockContainer extends Component {
     this.fetchStock();
   }
 
+  componentDidUpdate() {
+    console.log(`${this.props.ticker} updated`);
+  }
+
   handleChange = (event) => {
     this.setState({
       ticker: event.target.value,
@@ -23,10 +26,16 @@ class StockContainer extends Component {
   };
 
   fetchStock = () => {
+    if (this.props.ticker === "") {
+      console.log("cant fetch blank");
+      return;
+    }
+    //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     const API_KEY = "TK2WTT1V16S5RE86";
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=5min&apikey=${API_KEY}`;
+    console.log(`fetching ${this.props.ticker}`);
+    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.ticker}&interval=5min&apikey=${API_KEY}`;
     fetch(API_Call)
       .then((response) => {
         return response.json();
@@ -46,19 +55,14 @@ class StockContainer extends Component {
       });
   };
 
-  render() {  
+  render() {
     return (
       <div className="chartcard">
         <Stock
-          ticker={this.state.ticker}
+          ticker={this.props.ticker}
           stockChartXValues={this.state.stockChartXValues}
           stockChartYValues={this.state.stockChartYValues}
         />
-        {/* <form onSubmit={this.changeStock}>
-          <label htmlFor="stock"> View A Different Stock:  </label>
-          <input onChange={this.handleChange} type="text" name="stock"></input>
-          <input type="submit" />
-        </form> */}
       </div>
     );
   }

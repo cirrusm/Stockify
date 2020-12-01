@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+//MAKE CALL FOR INDIVIDUAL STOCK, GET PRICE, DAILY CHANGE, AND NAME OF STOCK GIVEN THE TICKER
 
 class StockCard extends Component {
   state = {};
   render() {
     return (
-      <div className="row stockcard justify-content-between">
+      <Link className="link" to="/stocks/show">
+        <div className="row stockcard justify-content-between">
           <div className="col-s6 words">
-        <h5>Stock Ticker</h5> 
-        <h6>Stock Name</h6>
-        </div>
-        <div className="col-s6 numbers">
+            <h6>Stock Ticker</h6>
+            <h6>Stock Name</h6>
+          </div>
+          <div className="col-s6 numbers">
             <h5>$123.45</h5>
-            <h6 className='text-success'>+4.6%</h6>
+            <h6 className="text-success">+4.6%</h6>
+          </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
