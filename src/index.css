@@ -109,6 +109,14 @@ input {
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
+.login {
+  height: 60vh;
+  min-height: 300px;
+}
+
+.login-container {
+  height: 100%;
+}
 .reg-image-holder {
   margin: auto auto;
   margin-left: 3vw;
@@ -116,4 +124,12 @@ input {
 
 .reg-inputs {
   padding: 25px;
+}
+
+.login-image-holder {
+  margin: auto auto;
+}
+
+.login-inputs {
+  margin: auto auto;
 }
