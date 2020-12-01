@@ -28,13 +28,13 @@ class Dashboard extends Component {
     console.log("render");
     return (
       <div>
-        <h1>SearchBar</h1>
+        <input type="search" placeholder="Search by symbol" />
         <div className="row"></div>
         <h1>Gainer Section</h1>
         <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
-            <StockContainer ticker="" />
+            <StockContainer ticker="aapl" />
           </div>
           <div className="col-md-4">
             {" "}

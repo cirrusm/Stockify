@@ -7,7 +7,7 @@ class StockCard extends Component {
   state = {};
   render() {
     return (
-      <Link className="link" to="/stocks/show">
+      <Link className="link" to={`/stocks/${this.props.ticker}`}>
         <div className="row stockcard justify-content-between">
           <div className="col-s6 words">
             <h6>Stock Ticker</h6>
@@ -15,7 +15,7 @@ class StockCard extends Component {
           </div>
           <div className="col-s6 numbers">
             <h5>$123.45</h5>
-            <h6 className="text-success">+4.6%</h6>
+            <h6 className="gain">+4.6%</h6>
           </div>
         </div>
       </Link>

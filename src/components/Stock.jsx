@@ -66,7 +66,10 @@ class Stock extends Component {
             title: `<b>${upper}</b> \n ${recentPrice}`,
           }}
         />
-        <Link to="/stocks/show" className="btn btn-primary stockbutton">
+        <Link
+          to={`/stocks/${this.props.ticker}`}
+          className="btn btn-primary stockbutton"
+        >
           View
         </Link>
         {/* <h5 className="text-center">Current price {recentPrice} </h5>
