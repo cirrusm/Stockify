@@ -8,7 +8,8 @@ const NavBar = (props) => {
     <nav className="d-flex justify-content-around">
       <Link to="/">Home</Link>
       <Link to="/stocks">Dashboard</Link>
-      <a href="/"> Log In</a>
+      <Link to="/login"> Log In</Link>
+      <Link to="/register">Register</Link>
     </nav>
   );
 };
