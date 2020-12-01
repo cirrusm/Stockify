@@ -82,3 +82,10 @@ body {
   margin-bottom: 70px;
   margin-top: 25px;
 }
+
+.stockarticle {
+  margin-top: 30px;
+  border: solid 1px black;
+  margin-right: 30px;
+  box-shadow: 2px 5px 2px 5px rgba(31, 63, 99, 0.4);
+}

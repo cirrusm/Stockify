@@ -38,11 +38,11 @@ class Dashboard extends Component {
           </div>
           <div className="col-md-4">
             {" "}
-            <StockContainer ticker="" />
+            <StockContainer ticker="dkng" />
           </div>
           <div className="col-md-4">
             {" "}
-            <StockContainer ticker="" />
+            <StockContainer ticker="msft" />
           </div>
         </div>
         <h1>Most Popular Stocks today</h1>

@@ -74,7 +74,7 @@ class StockShow extends Component {
     return (
       <>
         <div className="row">
-          <div className="col-10">
+          <div className="col-8">
             <Plot
               data={[
                 {
@@ -136,11 +136,41 @@ class StockShow extends Component {
           </div>
           <div className="col">
             News
-            <p>
+            <article className="row stockarticle">
+              <a href={this.state.news[0] ? this.state.news[0]["url"] : ""}>
+                <img
+                  src={this.state.news[0] ? this.state.news[0]["image"] : ""}
+                  width="100px"
+                  height="100px"
+                  alt=""
+                />
+              </a>
               {this.state.news[0]
                 ? this.state.news[0]["headline"]
                 : "no news to display"}
-            </p>
+            </article>
+            <article className="row stockarticle">
+              <img
+                src={this.state.news[1] ? this.state.news[1]["image"] : ""}
+                width="100px"
+                height="100px"
+                alt=""
+              />
+              {this.state.news[1]
+                ? this.state.news[1]["headline"]
+                : "no news to display"}
+            </article>
+            <article className="row stockarticle">
+              <img
+                src={this.state.news[2] ? this.state.news[2]["image"] : ""}
+                width="100px"
+                height="100px"
+                alt=""
+              />
+              {this.state.news[2]
+                ? this.state.news[2]["headline"]
+                : "no news to display"}
+            </article>
           </div>
         </div>
       </>
