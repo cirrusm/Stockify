@@ -8,11 +8,18 @@ class StockShow extends Component {
     stockChartXValues: [],
     stockChartYValues: [],
     news: [],
+    marketCap: "",
+    peRatio: "",
+    high: "",
+    low: "",
+    YTD: "",
+    Volume: "",
   };
 
   componentDidMount() {
     this.fetchStock();
     this.fetchNews();
+    this.fetchInfo();
   }
 
   color = () => {
@@ -22,6 +29,15 @@ class StockShow extends Component {
       return "red";
     }
   };
+  fetchInfo = () => {
+    let ticker = this.props.match.params["ticker"];
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${API_KEY}`;
+    fetch(API_Call)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   fetchNews = () => {
     let ticker = this.props.match.params["ticker"];
     let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378 ";
@@ -67,6 +83,19 @@ class StockShow extends Component {
       });
   };
 
+  setColor = () => {
+    if (this.state.stockChartYValues[0] < this.state.stockChartYValues[99]) {
+      return { color: "red" };
+    } else {
+      return { color: "green" };
+    }
+  };
+
+  setSign = () => {
+    if (this.state.stockChartYValues[0] > this.state.stockChartYValues[99]) {
+      return "+";
+    }
+  };
   render() {
     let upper = this.props.match.params["ticker"].toUpperCase();
     let recentPrice = this.state.stockChartYValues[0];
@@ -120,8 +149,9 @@ class StockShow extends Component {
                 <span className="recentprice">${recentPrice} </span>
                 <br />
                 <br />
-                <span>
-                  +{changeInPrice} ({percentChangePrice}%)
+                <span style={this.setColor()}>
+                  {this.setSign()}
+                  {changeInPrice} ({percentChangePrice}%)
                 </span>
                 <br />
                 <br />
@@ -132,17 +162,34 @@ class StockShow extends Component {
         </div>
         <div className="row">
           <div className="col">
-            {" "}
-            Key Information
-            <div className="row">
-              <div className="col top">Market Cap</div>
-              <div className="col top">PE Ratio</div>
-              <div className="col top">52 week High</div>
-            </div>
-            <div className="row">
-              <div className="col">52 week Low</div>
-              <div className="col">YTD Change</div>
-              <div className="col">Volume</div>
+            <h1>Key Information</h1>
+            <div className="keyinfo">
+              <div className="row">
+                <div className="col top">
+                  Market Cap <br /> <br /> <span className="info">50%</span>
+                </div>
+                <div className="col top">
+                  PE Ratio <br /> <br /> <span className="info">50%</span>{" "}
+                </div>
+                <div className="col top">
+                  52 week High <br />
+                  <br /> <span className="info">50%</span>
+                </div>
+              </div>
+              <div className="row lower">
+                <div className="col">
+                  52 week Low <br />
+                  <br /> <span className="info">50%</span>
+                </div>
+                <div className="col">
+                  YTD Change <br />
+                  <br /> <span className="info">50%</span>
+                </div>
+                <div className="col">
+                  Volume <br />
+                  <br /> <span className="info">50%</span>
+                </div>
+              </div>
             </div>
           </div>
 
