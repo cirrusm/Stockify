@@ -8,12 +8,13 @@ class StockShow extends Component {
     stockChartXValues: [],
     stockChartYValues: [],
     news: [],
+    name: "",
     marketCap: "",
     peRatio: "",
     high: "",
     low: "",
     YTD: "",
-    Volume: "",
+    volume: "",
   };
 
   componentDidMount() {
@@ -35,7 +36,17 @@ class StockShow extends Component {
     let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${API_KEY}`;
     fetch(API_Call)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) =>
+        this.setState({
+          name: data.companyName,
+          marketCap: data.marketCap,
+          peRatio: data.peRatio,
+          high: data.week52High,
+          low: data.week52Low,
+          YTD: data.ytdChange,
+          volume: data.volume,
+        })
+      );
   };
 
   fetchNews = () => {
@@ -104,6 +115,7 @@ class StockShow extends Component {
     let percentChangePrice = parseFloat(
       (changeInPrice * 100) / recentPrice
     ).toFixed(2);
+    let updatedYTD = parseFloat(this.state.YTD * 100).toFixed(2) + "%";
     return (
       <>
         <div className="row">
@@ -144,7 +156,7 @@ class StockShow extends Component {
           </div>
           <div className="col d-flex flex-column showinfo align-items-center">
             <div className="cardcontent align-items-center">
-              <div className="p-2">Apple Technology</div>
+              <div className="p-2">{this.state.name}</div>
               <div className="p-2">
                 <span className="recentprice">${recentPrice} </span>
                 <br />
@@ -166,28 +178,30 @@ class StockShow extends Component {
             <div className="keyinfo">
               <div className="row">
                 <div className="col top">
-                  Market Cap <br /> <br /> <span className="info">50%</span>
+                  Market Cap <br /> <br />{" "}
+                  <span className="info">{this.state.marketCap}</span>
                 </div>
                 <div className="col top">
-                  PE Ratio <br /> <br /> <span className="info">50%</span>{" "}
+                  PE Ratio <br /> <br />{" "}
+                  <span className="info">{this.state.peRatio}</span>{" "}
                 </div>
                 <div className="col top">
                   52 week High <br />
-                  <br /> <span className="info">50%</span>
+                  <br /> <span className="info">{this.state.high}</span>
                 </div>
               </div>
               <div className="row lower">
                 <div className="col">
                   52 week Low <br />
-                  <br /> <span className="info">50%</span>
+                  <br /> <span className="info">{this.state.low}</span>
                 </div>
                 <div className="col">
                   YTD Change <br />
-                  <br /> <span className="info">50%</span>
+                  <br /> <span className="info">{updatedYTD}</span>
                 </div>
                 <div className="col">
                   Volume <br />
-                  <br /> <span className="info">50%</span>
+                  <br /> <span className="info">{this.state.volume}</span>
                 </div>
               </div>
             </div>
