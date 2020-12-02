@@ -71,6 +71,10 @@ class StockShow extends Component {
     let upper = this.props.match.params["ticker"].toUpperCase();
     let recentPrice = this.state.stockChartYValues[0];
     let startingPrice = this.state.stockChartYValues[99];
+    let changeInPrice = parseFloat(recentPrice - startingPrice).toFixed(2);
+    let percentChangePrice = parseFloat(
+      (changeInPrice * 100) / recentPrice
+    ).toFixed(2);
     return (
       <>
         <div className="row">
@@ -113,9 +117,16 @@ class StockShow extends Component {
             <div className="cardcontent align-items-center">
               <div className="p-2">Apple Technology</div>
               <div className="p-2">
-                125.63 <span>+3.45 (2.43%)</span>
+                <span className="recentprice">${recentPrice} </span>
+                <br />
+                <br />
+                <span>
+                  +{changeInPrice} ({percentChangePrice}%)
+                </span>
+                <br />
+                <br />
               </div>
-              <div className="p-1 btn btn-primary">Buy AAPL</div>
+              <div className="p-1 btn btn-primary">Buy {upper}</div>
             </div>
           </div>
         </div>
@@ -134,43 +145,90 @@ class StockShow extends Component {
               <div className="col">Volume</div>
             </div>
           </div>
+
           <div className="col">
-            News
-            <article className="row stockarticle">
-              <a href={this.state.news[0] ? this.state.news[0]["url"] : ""}>
-                <img
-                  src={this.state.news[0] ? this.state.news[0]["image"] : ""}
-                  width="100px"
-                  height="100px"
-                  alt=""
-                />
-              </a>
-              {this.state.news[0]
-                ? this.state.news[0]["headline"]
-                : "no news to display"}
-            </article>
-            <article className="row stockarticle">
-              <img
-                src={this.state.news[1] ? this.state.news[1]["image"] : ""}
-                width="100px"
-                height="100px"
-                alt=""
-              />
-              {this.state.news[1]
-                ? this.state.news[1]["headline"]
-                : "no news to display"}
-            </article>
-            <article className="row stockarticle">
-              <img
-                src={this.state.news[2] ? this.state.news[2]["image"] : ""}
-                width="100px"
-                height="100px"
-                alt=""
-              />
-              {this.state.news[2]
-                ? this.state.news[2]["headline"]
-                : "no news to display"}
-            </article>
+            <h1>Recent News</h1>
+            <a
+              className="articlelink"
+              href={this.state.news[0] ? this.state.news[0]["url"] : ""}
+            >
+              <article className="row stockarticle">
+                <div className="col-2 articleimage">
+                  <img
+                    src={this.state.news[0] ? this.state.news[0]["image"] : ""}
+                    width="100px"
+                    height="100px"
+                    alt=""
+                  />
+                </div>
+                <div className="col-9 articlecontent">
+                  <div className="row articletop">
+                    {this.state.news[0]
+                      ? this.state.news[0]["headline"]
+                      : "no news to display"}
+                  </div>
+                  <div className="row articlebottom">
+                    {this.state.news[0]
+                      ? this.state.news[0]["summary"].substring(0, 250) + "..."
+                      : ""}
+                  </div>
+                </div>
+              </article>
+            </a>
+            <a
+              className="articlelink"
+              href={this.state.news[0] ? this.state.news[0]["url"] : ""}
+            >
+              <article className="row stockarticle">
+                <div className="col-2 articleimage">
+                  <img
+                    src={this.state.news[1] ? this.state.news[1]["image"] : ""}
+                    width="100px"
+                    height="100px"
+                    alt=""
+                  />
+                </div>
+                <div className="col-9 articlecontent">
+                  <div className="row articletop">
+                    {this.state.news[1]
+                      ? this.state.news[1]["headline"]
+                      : "no news to display"}
+                  </div>
+                  <div className="row articlebottom">
+                    {this.state.news[1]
+                      ? this.state.news[1]["summary"].substring(0, 250) + "..."
+                      : ""}
+                  </div>
+                </div>
+              </article>
+            </a>
+            <a
+              className="articlelink"
+              href={this.state.news[0] ? this.state.news[0]["url"] : ""}
+            >
+              <article className="row stockarticle">
+                <div className="col-2 articleimage">
+                  <img
+                    src={this.state.news[2] ? this.state.news[2]["image"] : ""}
+                    width="100px"
+                    height="100px"
+                    alt=""
+                  />
+                </div>
+                <div className="col-9 articlecontent">
+                  <div className="row articletop">
+                    {this.state.news[2]
+                      ? this.state.news[2]["headline"]
+                      : "no news to display"}
+                  </div>
+                  <div className="row articlebottom">
+                    {this.state.news[2]
+                      ? this.state.news[2]["summary"].substring(0, 250) + "..."
+                      : ""}
+                  </div>
+                </div>
+              </article>
+            </a>
           </div>
         </div>
       </>
