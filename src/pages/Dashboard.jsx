@@ -45,7 +45,7 @@ class Dashboard extends Component {
             <StockContainer ticker="msft" />
           </div>
         </div>
-        <h1>Most Popular Stocks today</h1>
+        <h2 className="popular">Most Popular Stocks Today</h2>
         <div className="row cardcontainer">
           <div className="col-md-4 ">
             <StockCard />
