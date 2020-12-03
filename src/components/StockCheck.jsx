@@ -22,14 +22,29 @@ class StockCheck extends Component {
         })
       );
   };
+
+  calculateDif = () => {
+    let difference = parseFloat(
+      this.state.currentPrice - this.props.stock.price
+    ).toFixed(2);
+    return difference;
+  };
+
+  percentChange = () => {
+    let change = parseFloat(
+      ((this.state.currentPrice - this.props.stock.price) * 100) /
+        this.props.stock.price
+    ).toFixed(2);
+    return change;
+  };
   render() {
     return (
       <>
         <div className="row">
-          <div className="col">Ticker</div>
-          <div className="col">Shares</div>
-          <div className="col">Total Change</div>
-          <div className="col">Percent Change</div>
+          <div className="col">{this.props.stock.ticker}</div>
+          <div className="col">{this.props.stock.shares}</div>
+          <div className="col">{this.calculateDif()}</div>
+          <div className="col">{this.percentChange()}</div>
         </div>
       </>
     );

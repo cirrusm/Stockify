@@ -28,7 +28,13 @@ class Portfolio extends Component {
   render() {
     return (
       <div>
-        User Portfolio
+        <h2>Cirrus's Portfolio</h2>
+        <div className="row">
+          <div className="col">Ticker</div>
+          <div className="col">Shares</div>
+          <div className="col">Total Gain</div>
+          <div className="col">Return on Investment</div>
+        </div>
         <div>{this.renderStocks()}</div>
       </div>
     );
