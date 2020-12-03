@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import background from "../images/background.png";
 const Home = (props) => {
+  fetch("http://localhost:5000/api/stocks/")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+    });
+
   return (
     <div className="home">
       <div className="first">
