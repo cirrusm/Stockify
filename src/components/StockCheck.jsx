@@ -25,7 +25,8 @@ class StockCheck extends Component {
 
   calculateDif = () => {
     let difference = parseFloat(
-      this.state.currentPrice - this.props.stock.price
+      (this.state.currentPrice - this.props.stock.price) *
+        this.props.stock.shares
     ).toFixed(2);
     return difference;
   };
@@ -53,16 +54,28 @@ class StockCheck extends Component {
     }
   };
 
+  plus = () => {
+    if (this.state.currentPrice > this.props.stock.price) {
+      return "+";
+    }
+  };
+
+  sellStock = () => {};
+
   render() {
     return (
       <>
         <div className="row stocklisting">
+          <div className="col-1">
+            {" "}
+            <button className="btn-primary">Sell</button>
+          </div>
           <div className="col">{this.props.stock.ticker}</div>
           <div className="col">{this.props.stock.shares}</div>
           <div className="col">{this.state.currentPrice}</div>
-          <div className="col">{this.currentValue()}</div>
-          <div className="col">
-            {this.calculateDif()} ({this.percentChange()})
+          <div className="col">{this.props.stock.price}</div>
+          <div style={this.color()} className="col">
+            {this.plus()} {this.calculateDif()} ({this.percentChange()})
           </div>
         </div>
       </>

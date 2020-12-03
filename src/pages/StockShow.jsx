@@ -9,8 +9,8 @@ class StockShow extends Component {
     super(props);
 
     this.state = {
-      stockChartXValues: this.props.location.stockChartXValues,
-      stockChartYValues: this.props.location.stockChartYValues,
+      stockChartXValues: [],
+      stockChartYValues: [],
       news: [],
       name: "",
       marketCap: "",
@@ -19,8 +19,8 @@ class StockShow extends Component {
       low: "",
       YTD: "",
       volume: "",
-      price: this.props.location.price,
-      oldprice: this.props.location.oldprice,
+      price: "",
+      oldprice: "",
       timeframe: "Daily Change",
       logo: "",
     };
@@ -32,7 +32,7 @@ class StockShow extends Component {
     this.fetchNews();
     this.fetchInfo();
     this.fetchLogo();
-    // this.fetchStock();
+    this.fetchStock();
     console.log(this.state.stockChartYValues);
   }
 
@@ -116,6 +116,8 @@ class StockShow extends Component {
           stockChartXValues: stockChartXValuesFunction,
           stockChartYValues: stockChartYValuesFunction,
           oldprice: stockChartYValuesFunction[0],
+          price:
+            stockChartYValuesFunction[stockChartXValuesFunction.length - 1],
         });
       });
   };
