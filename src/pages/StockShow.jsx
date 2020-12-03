@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Stock from "../components/Stock";
 import StockContainer from "../components/StockContainer";
 import Plot from "react-plotly.js";
+import { Link } from "react-router-dom";
 
 class StockShow extends Component {
   state = {
@@ -168,7 +169,14 @@ class StockShow extends Component {
                 <br />
                 <br />
               </div>
-              <div className="p-1 btn btn-primary">Buy {upper}</div>
+              <Link
+                to={{
+                  pathname: `/stocks/buy/${this.props.match.params["ticker"]}`,
+                  currentPrice: this.state.stockChartYValues[0],
+                }}
+              >
+                <div className="p-1 btn btn-primary">Buy {upper}</div>
+              </Link>
             </div>
           </div>
         </div>
