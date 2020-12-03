@@ -22,6 +22,7 @@ class StockShow extends Component {
       price: this.props.location.price,
       oldprice: this.props.location.oldprice,
       timeframe: "Daily Change",
+      logo: "",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleClickDaily = this.handleClickDaily.bind(this);
@@ -30,6 +31,7 @@ class StockShow extends Component {
   componentDidMount() {
     this.fetchNews();
     this.fetchInfo();
+    this.fetchLogo();
     // this.fetchStock();
     console.log(this.state.stockChartYValues);
   }
@@ -43,6 +45,19 @@ class StockShow extends Component {
       return "red";
     }
   };
+  fetchLogo = () => {
+    let ticker = this.props.match.params["ticker"];
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/logo?token=${API_KEY}`;
+    fetch(API_Call)
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          logo: data["url"],
+        })
+      );
+  };
+
   fetchInfo = () => {
     let ticker = this.props.match.params["ticker"];
     let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
@@ -244,6 +259,8 @@ class StockShow extends Component {
 
           <div className="col d-flex flex-column showinfo align-items-center">
             <div className="cardcontent align-items-center">
+              <img className="logo" src={this.state.logo} alt="" />
+              {this.state.logo["url"]}
               <div className="p-2">{this.state.name}</div>
               <div className="p-2">
                 <span className="recentprice">${this.state.price} </span>
@@ -265,6 +282,8 @@ class StockShow extends Component {
                 to={{
                   pathname: `/stocks/buy/${this.props.match.params["ticker"]}`,
                   currentPrice: this.state.price,
+                  logo: this.state.logo,
+                  name: this.state.name,
                 }}
               >
                 <div className="p-1 btn btn-primary">Buy {upper}</div>

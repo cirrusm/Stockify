@@ -267,3 +267,43 @@ input {
 .stocklisting {
   margin-top: 20px;
 }
+
+.buycontainer {
+  border: 1px solid rgba(31, 63, 99, 0.4);
+  border-radius: 10px;
+  background-color: rgba(31, 63, 99, 0.4);
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  padding-top: 30px;
+  margin-left: 45px;
+  margin-right: 25px;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-top: 15vh;
+  margin-bottom: 60px;
+  width: 50vw;
+  height: 50vh;
+}
+
+.purchaseamount {
+  color: black;
+  margin-top: 50px;
+}
+
+.totalbuycost {
+  margin-top: 30px;
+}
+
+.buyheader {
+  margin-left: 12%;
+  margin-right: 6%;
+}
+
+.logo {
+  border-radius: 60px;
+}
+
+.buylogo {
+  border-radius: 60px;
+  margin-top: 5vh;
+}
