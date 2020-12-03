@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NumericInput from "react-numeric-input";
 
 class BuyStock extends Component {
   state = {
@@ -11,7 +10,7 @@ class BuyStock extends Component {
   handleChange = (event) => {
     this.setState({
       shares: event.target.value,
-      total: parseInt(
+      total: parseFloat(
         event.target.value * Number(this.props.location.currentPrice)
       ).toFixed(2),
     });

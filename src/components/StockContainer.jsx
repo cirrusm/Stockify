@@ -15,11 +15,21 @@ class StockContainer extends Component {
 
   componentDidMount() {
     this.fetchStock();
+    this.fetchPrice();
   }
 
-  componentDidUpdate() {
-    console.log(`${this.props.ticker} updated`);
-  }
+  fetchPrice = () => {
+    let ticker = this.props.ticker;
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/latestPrice?token=${API_KEY}`;
+    fetch(API_Call)
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          price: parseFloat(data).toFixed(2),
+        })
+      );
+  };
 
   handleChange = (event) => {
     this.setState({
@@ -35,26 +45,27 @@ class StockContainer extends Component {
     //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
-    const API_KEY = "TK2WTT1V16S5RE86";
-    console.log(`fetching ${this.props.ticker}`);
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.ticker}&interval=5min&apikey=${API_KEY}`;
+    const API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${this.props.ticker}/intraday-prices?chartInterval=5&token=${API_KEY}`;
+
+    // console.log(`fetching ${this.props.ticker}`);
+    // let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.ticker}&interval=5min&apikey=${API_KEY}`;
     fetch(API_Call)
-      .then((response) => {
-        return response.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        for (let key in data["Time Series (5min)"]) {
-          stockChartXValuesFunction.push(key);
+        for (let key in data) {
+          stockChartXValuesFunction.push(data[key]["label"]);
           stockChartYValuesFunction.push(
-            parseFloat(data["Time Series (5min)"][key]["1. open"]).toFixed(2)
+            parseFloat(data[key]["average"]).toFixed(2)
           );
         }
+
         this.setState({
           stockChartXValues: stockChartXValuesFunction,
           stockChartYValues: stockChartYValuesFunction,
-          price: stockChartYValuesFunction[0],
-          oldprice: stockChartYValuesFunction[99],
+          oldprice:
+            stockChartYValuesFunction[stockChartYValuesFunction.length - 1],
         });
       });
   };

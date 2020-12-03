@@ -32,8 +32,9 @@ class Portfolio extends Component {
         <div className="row">
           <div className="col">Ticker</div>
           <div className="col">Shares</div>
-          <div className="col">Total Gain</div>
-          <div className="col">Return on Investment</div>
+          <div className="col">Current Value</div>
+          <div className="col">Purchased For</div>
+          <div className="col">Total Gain and percent</div>
         </div>
         <div>{this.renderStocks()}</div>
       </div>

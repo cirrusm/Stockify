@@ -27,7 +27,7 @@ class Stock extends Component {
   render() {
     // let priceNow = this.props.stockChartYValues[0] ? this.props.stockChartYValues[0].toFixed(2) : ""
     let upper = this.props.ticker.toUpperCase();
-    let recentPrice = this.props.stockChartYValues[0];
+    let recentPrice = this.props.price;
     let startingPrice = this.props.stockChartYValues[99];
     let changeInPrice = parseFloat(recentPrice - startingPrice).toFixed(2);
 

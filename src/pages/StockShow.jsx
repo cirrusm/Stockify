@@ -25,6 +25,7 @@ class StockShow extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleClickDaily = this.handleClickDaily.bind(this);
+    this.handleClickYearly = this.handleClickYearly.bind(this);
   }
   componentDidMount() {
     this.fetchNews();
@@ -169,6 +170,10 @@ class StockShow extends Component {
     this.fetchDaily();
   }
 
+  handleClickYearly() {
+    console.log("yearly");
+  }
+
   setColor = () => {
     if (this.state.price < this.state.oldprice) {
       return { color: "red" };
@@ -240,6 +245,12 @@ class StockShow extends Component {
                 onClick={this.handleClickDaily}
               >
                 Last Day
+              </button>
+              <button
+                className="chartbutton btn btn-primary"
+                onClick={this.handleClickYearly}
+              >
+                Last Year
               </button>
             </div>
           </div>

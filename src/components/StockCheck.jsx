@@ -18,7 +18,7 @@ class StockCheck extends Component {
       .then((res) => res.json())
       .then((data) =>
         this.setState({
-          currentPrice: data,
+          currentPrice: parseFloat(data).toFixed(2),
         })
       );
   };
@@ -37,14 +37,33 @@ class StockCheck extends Component {
     ).toFixed(2);
     return change;
   };
+
+  currentValue = () => {
+    let currentTotal = parseFloat(
+      this.state.currentPrice * this.props.stock.shares
+    ).toFixed(2);
+    return currentTotal;
+  };
+
+  color = () => {
+    if (this.state.currentPrice < this.props.stock.price) {
+      return { color: "red" };
+    } else {
+      return { color: "green" };
+    }
+  };
+
   render() {
     return (
       <>
-        <div className="row">
+        <div className="row stocklisting">
           <div className="col">{this.props.stock.ticker}</div>
           <div className="col">{this.props.stock.shares}</div>
-          <div className="col">{this.calculateDif()}</div>
-          <div className="col">{this.percentChange()}</div>
+          <div className="col">{this.state.currentPrice}</div>
+          <div className="col">{this.currentValue()}</div>
+          <div className="col">
+            {this.calculateDif()} ({this.percentChange()})
+          </div>
         </div>
       </>
     );
