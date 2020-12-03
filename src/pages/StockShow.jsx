@@ -85,7 +85,7 @@ class StockShow extends Component {
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     const API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
-    let API_Call = `https://cloud.iexapis.com/stable/stock/${this.props.ticker}/intraday-prices?chartInterval=5&token=${API_KEY}`;
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${this.props.match.params["ticker"]}/intraday-prices?chartInterval=5&token=${API_KEY}`;
 
     fetch(API_Call)
       .then((res) => res.json())
