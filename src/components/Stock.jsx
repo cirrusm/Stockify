@@ -71,6 +71,8 @@ class Stock extends Component {
             pathname: `/stocks/${this.props.ticker}`,
             stockChartXValues: this.props.stockChartXValues,
             stockChartYValues: this.props.stockChartYValues,
+            price: this.props.price,
+            oldprice: this.props.oldprice,
           }}
           className="btn btn-primary stockbutton"
         >

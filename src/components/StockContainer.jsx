@@ -5,6 +5,8 @@ class StockContainer extends Component {
   state = {
     stockChartXValues: [],
     stockChartYValues: [],
+    price: "",
+    oldprice: "",
   };
   changeStock = (event) => {
     event.preventDefault();
@@ -51,6 +53,8 @@ class StockContainer extends Component {
         this.setState({
           stockChartXValues: stockChartXValuesFunction,
           stockChartYValues: stockChartYValuesFunction,
+          price: stockChartYValuesFunction[0],
+          oldprice: stockChartYValuesFunction[99],
         });
       });
   };
@@ -62,6 +66,8 @@ class StockContainer extends Component {
           ticker={this.props.ticker}
           stockChartXValues={this.state.stockChartXValues}
           stockChartYValues={this.state.stockChartYValues}
+          price={this.state.price}
+          oldprice={this.state.oldprice}
         />
       </div>
     );

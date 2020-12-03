@@ -20,7 +20,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    console.log("hi");
+    console.log("dashboard");
   }
 
   //MAKE API CALL TO GET TOP 3 GAINERS AND TOP 10 POPULAR FROM IEX
