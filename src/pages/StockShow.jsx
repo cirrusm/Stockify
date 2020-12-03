@@ -127,35 +127,27 @@ class StockShow extends Component {
       });
   };
 
-  // fetchDaily = () => {
-  //   //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
-  //   let stockChartXValuesFunction = [];
-  //   let stockChartYValuesFunction = [];
-  //   let ticker = this.props.match.params["ticker"];
-  //   const API_KEY = "TK2WTT1V16S5RE86";
-  //   console.log(`fetching ${ticker}`);
-  //   let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=${API_KEY}`;
-  //   fetch(API_Call)
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       for (let key in data["Time Series (5min)"]) {
-  //         stockChartXValuesFunction.push(key);
-  //         stockChartYValuesFunction.push(
-  //           parseFloat(data["Time Series (5min)"][key]["1. open"]).toFixed(2)
-  //         );
-  //       }
-  //       this.setState({
-  //         stockChartXValues: stockChartXValuesFunction,
-  //         stockChartYValues: stockChartYValuesFunction,
-  //         oldprice:
-  //           stockChartYValuesFunction[stockChartYValuesFunction.length - 1],
-  //         timeframe: "Daily Change",
-  //       });
-  //     });
-  // };
+  fetchYearly = () => {
+    let stockChartXValuesFunction = [];
+    let stockChartYValuesFunction = [];
+    let ticker = this.props.match.params["ticker"];
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/chart/1y?chartCloseOnly=true&token=${API_KEY}`;
+    fetch(API_Call)
+      .then((res) => res.json())
+      .then((data) => {
+        for (let key in data) {
+          stockChartYValuesFunction.push(data[key]["close"]);
+          stockChartXValuesFunction.push(data[key]["label"]);
+        }
+        this.setState({
+          stockChartXValues: stockChartXValuesFunction,
+          stockChartYValues: stockChartYValuesFunction,
+          oldprice: stockChartYValuesFunction[0],
+          timeframe: "Yearly Change",
+        });
+      });
+  };
 
   handleClick() {
     this.fetchMonthly();
@@ -166,7 +158,7 @@ class StockShow extends Component {
   }
 
   handleClickYearly() {
-    console.log("yearly");
+    this.fetchYearly();
   }
 
   setColor = () => {
