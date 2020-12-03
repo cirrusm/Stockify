@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import StockShow from "../pages/StockShow";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Portfolio from "../pages/Portfolio";
 
 export default (
   <Switch>
@@ -14,5 +15,6 @@ export default (
     <Route exact path="/stocks/:ticker" component={StockShow} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/register" component={Register} />
+    <Route exact path="/portfolio" component={Portfolio} />
   </Switch>
 );
