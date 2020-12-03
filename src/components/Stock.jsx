@@ -67,7 +67,11 @@ class Stock extends Component {
           }}
         />
         <Link
-          to={`/stocks/${this.props.ticker}`}
+          to={{
+            pathname: `/stocks/${this.props.ticker}`,
+            stockChartXValues: this.props.stockChartXValues,
+            stockChartYValues: this.props.stockChartYValues,
+          }}
           className="btn btn-primary stockbutton"
         >
           View

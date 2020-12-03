@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 class StockShow extends Component {
   state = {
-    stockChartXValues: [],
-    stockChartYValues: [],
+    stockChartXValues: this.props.location.stockChartXValues,
+    stockChartYValues: this.props.location.stockChartYValues,
     news: [],
     name: "",
     marketCap: "",
@@ -19,7 +19,7 @@ class StockShow extends Component {
   };
 
   componentDidMount() {
-    this.fetchStock();
+    // this.fetchStock();
     this.fetchNews();
     this.fetchInfo();
   }
@@ -64,33 +64,54 @@ class StockShow extends Component {
     console.log(this.state.news);
   };
 
-  fetchStock = () => {
-    if (this.props.ticker === "") {
-      console.log("cant fetch blank");
-      return;
-    }
-    //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
+  // fetchStock = () => {
+  //   if (this.props.ticker === "") {
+  //     console.log("cant fetch blank");
+  //     return;
+  //   }
+  //   //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
+  //   let stockChartXValuesFunction = [];
+  //   let stockChartYValuesFunction = [];
+  //   let ticker = this.props.match.params["ticker"];
+  //   const API_KEY = "TK2WTT1V16S5RE86";
+  //   console.log(`fetching ${ticker}`);
+  //   let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=${API_KEY}`;
+  //   fetch(API_Call)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       for (let key in data["Time Series (5min)"]) {
+  //         stockChartXValuesFunction.push(key);
+  //         stockChartYValuesFunction.push(
+  //           parseFloat(data["Time Series (5min)"][key]["1. open"]).toFixed(2)
+  //         );
+  //       }
+  //       this.setState({
+  //         stockChartXValues: stockChartXValuesFunction,
+  //         stockChartYValues: stockChartYValuesFunction,
+  //       });
+  //     });
+  // };
+
+  fetchMonthly = () => {
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     let ticker = this.props.match.params["ticker"];
-    const API_KEY = "TK2WTT1V16S5RE86";
-    console.log(`fetching ${ticker}`);
-    let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=${API_KEY}`;
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/chart/1m?chartCloseOnly=true&token=${API_KEY}`;
     fetch(API_Call)
-      .then((response) => {
-        return response.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        for (let key in data["Time Series (5min)"]) {
-          stockChartXValuesFunction.push(key);
-          stockChartYValuesFunction.push(
-            parseFloat(data["Time Series (5min)"][key]["1. open"]).toFixed(2)
-          );
+        console.log("monthly is this " + JSON.stringify(data));
+        for (let key in data) {
+          stockChartYValuesFunction.push(data[key]["close"]);
+          stockChartYValuesFunction.push(data[key]["label"]);
         }
         this.setState({
           stockChartXValues: stockChartXValuesFunction,
-          stockChartYValues: stockChartYValuesFunction,
+          stockChartYValuesFunction: stockChartYValuesFunction,
         });
       });
   };
@@ -155,6 +176,7 @@ class StockShow extends Component {
               }}
             />
           </div>
+
           <div className="col d-flex flex-column showinfo align-items-center">
             <div className="cardcontent align-items-center">
               <div className="p-2">{this.state.name}</div>
