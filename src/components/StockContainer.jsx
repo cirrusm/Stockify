@@ -42,18 +42,15 @@ class StockContainer extends Component {
       console.log("cant fetch blank");
       return;
     }
-    //MIGHT NEED TO CHANGE CALL TO TAKE props PASSED IN FROM DASHBOARD
+
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
     const API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
     let API_Call = `https://cloud.iexapis.com/stable/stock/${this.props.ticker}/intraday-prices?chartInterval=5&token=${API_KEY}`;
 
-    // console.log(`fetching ${this.props.ticker}`);
-    // let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.props.ticker}&interval=5min&apikey=${API_KEY}`;
     fetch(API_Call)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         for (let key in data) {
           stockChartXValuesFunction.push(data[key]["label"]);
           stockChartYValuesFunction.push(
@@ -64,8 +61,7 @@ class StockContainer extends Component {
         this.setState({
           stockChartXValues: stockChartXValuesFunction,
           stockChartYValues: stockChartYValuesFunction,
-          oldprice:
-            stockChartYValuesFunction[stockChartYValuesFunction.length - 1],
+          oldprice: stockChartYValuesFunction[0],
         });
       });
   };

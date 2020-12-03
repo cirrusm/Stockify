@@ -18,7 +18,10 @@ class Stock extends Component {
   // }
 
   color = () => {
-    if (this.props.stockChartYValues[0] > this.props.stockChartYValues[99]) {
+    if (
+      this.props.stockChartYValues[0] <
+      this.props.stockChartYValues[this.props.stockChartYValues.length - 1]
+    ) {
       return "green";
     } else {
       return "red";
