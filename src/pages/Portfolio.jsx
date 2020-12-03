@@ -21,7 +21,7 @@ class Portfolio extends Component {
 
   renderStocks() {
     return this.state.stocks.map((stock, index) => {
-      return <StockCheck stock={stock} />;
+      return <StockCheck stock={stock} ticker={stock.ticker} />;
     });
   }
 

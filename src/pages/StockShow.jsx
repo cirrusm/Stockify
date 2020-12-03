@@ -33,7 +33,7 @@ class StockShow extends Component {
   fetchInfo = () => {
     let ticker = this.props.match.params["ticker"];
     let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
-    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${API_KEY}`;
+    let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/quote/?token=${API_KEY}`;
     fetch(API_Call)
       .then((res) => res.json())
       .then((data) =>
