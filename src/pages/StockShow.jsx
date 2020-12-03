@@ -242,17 +242,17 @@ class StockShow extends Component {
                 className="chartbutton btn btn-primary"
                 onClick={this.handleClick}
               >
-                Last Month
-              </button>
-              <button
-                className="chartbutton btn btn-primary"
-                onClick={this.handleClickDaily}
-              >
                 Last Day
               </button>
               <button
                 className="chartbutton btn btn-primary"
                 onClick={this.handleClickYearly}
+              >
+                Last Month
+              </button>
+              <button
+                className="chartbutton btn btn-primary"
+                onClick={this.handleClickDaily}
               >
                 Last Year
               </button>

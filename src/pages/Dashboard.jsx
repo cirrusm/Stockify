@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import StockContainer from "../components/StockContainer";
 import StockCard from "../components/StockCard";
 import "../index.css";
+import TextField from "material-ui/TextField";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   state = {
@@ -17,6 +20,7 @@ class Dashboard extends Component {
     popular7: "",
     popular8: "",
     popular9: "",
+    search: "",
   };
 
   componentDidMount() {
@@ -28,7 +32,16 @@ class Dashboard extends Component {
     console.log("render");
     return (
       <div>
-        <input type="search" placeholder="Search by symbol" />
+        <MuiThemeProvider>
+          <TextField
+            type="email"
+            floatingLabelText="Search By Ticker"
+            onChange={(event, newValue) => this.setState({ search: newValue })}
+          />
+          <Link to={`/stocks/${this.state.search}`}>
+            <input type="submit" value="search" />
+          </Link>
+        </MuiThemeProvider>
         <div className="row"></div>
         <h1>Gainer Section</h1>
         <div className="row graphcontainer">
