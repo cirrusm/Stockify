@@ -10,6 +10,7 @@ body {
   margin-left: 45px;
   text-align: center;
   height: 10vh;
+  min-height: 70px;
   display: flex;
   border: 1px solid rgba(31, 63, 99, 0.4);
   border-radius: 10px;
@@ -342,4 +343,11 @@ input {
 
 .fullchart {
   margin-top: 6vh;
+}
+
+.logodashboard {
+  border-radius: 60px;
+  margin: auto auto;
+  margin-top: 10px;
+  margin-left: 10px;
 }

@@ -118,6 +118,7 @@ class StockShow extends Component {
           oldprice: stockChartYValuesFunction[0],
           price:
             stockChartYValuesFunction[stockChartXValuesFunction.length - 1],
+          timeframe: "Todays Change",
         });
       });
   };
@@ -197,7 +198,7 @@ class StockShow extends Component {
       this.state.price - this.state.oldprice
     ).toFixed(2);
     let percentChangePrice = parseFloat(
-      (changeInPrice * 100) / this.state.price
+      (changeInPrice * 100) / this.state.oldprice
     ).toFixed(2);
     let updatedYTD = parseFloat(this.state.YTD * 100).toFixed(2) + "%";
     return (
@@ -242,19 +243,19 @@ class StockShow extends Component {
                 className="chartbutton btn btn-primary"
                 onClick={this.handleClick}
               >
-                Last Day
+                Last Month
               </button>
               <button
                 className="chartbutton btn btn-primary"
                 onClick={this.handleClickYearly}
               >
-                Last Month
+                Last Year
               </button>
               <button
                 className="chartbutton btn btn-primary"
                 onClick={this.handleClickDaily}
               >
-                Last Year
+                Last Day
               </button>
             </div>
           </div>

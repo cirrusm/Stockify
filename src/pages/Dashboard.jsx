@@ -11,23 +11,45 @@ class Dashboard extends Component {
     gainer1: "",
     gainer2: "",
     gainer3: "",
-    popular1: "",
-    popular2: "",
-    popular3: "",
-    popular4: "",
-    popular5: "",
-    popular6: "",
-    popular7: "",
-    popular8: "",
-    popular9: "",
+    mover1: "",
+    mover2: "",
+    mover3: "",
+    mover4: "",
+    mover5: "",
+    mover6: "",
+    mover7: "",
+    mover8: "",
+    mover9: "",
     search: "",
   };
 
   componentDidMount() {
     console.log("dashboard");
+    this.fetchMovers();
   }
 
   //MAKE API CALL TO GET TOP 3 GAINERS AND TOP 10 POPULAR FROM IEX
+  fetchMovers = () => {
+    let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
+    let API_Call = `https://cloud.iexapis.com/stable/stock/market/list/gainers?token=${API_KEY}`;
+    fetch(API_Call)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          mover1: data[1],
+          mover2: data[2],
+          mover3: data[3],
+          mover4: data[4],
+          mover5: data[5],
+          mover6: data[6],
+          mover7: data[7],
+          mover8: data[8],
+          mover9: data[9],
+        });
+      });
+  };
+
   render() {
     console.log("render");
     return (
@@ -58,22 +80,22 @@ class Dashboard extends Component {
             <StockContainer ticker="msft" />
           </div>
         </div>
-        <h2 className="popular">Most Popular Stocks Today</h2>
+        <h2 className="popular">Todays Biggest Gainers</h2>
         <div className="row cardcontainer">
           <div className="col-md-4 ">
-            <StockCard />
-            <StockCard />
-            <StockCard />
+            <StockCard stock={this.state.mover1} />
+            <StockCard stock={this.state.mover2} />
+            <StockCard stock={this.state.mover3} />
           </div>
           <div className="col-md-4">
-            <StockCard />
-            <StockCard />
-            <StockCard />
+            <StockCard stock={this.state.mover4} />
+            <StockCard stock={this.state.mover5} />
+            <StockCard stock={this.state.mover6} />
           </div>
           <div className="col-md-4">
-            <StockCard />
-            <StockCard />
-            <StockCard />
+            <StockCard stock={this.state.mover6} />
+            <StockCard stock={this.state.mover7} />
+            <StockCard stock={this.state.mover8} />
           </div>
         </div>
       </div>
