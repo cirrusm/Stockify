@@ -23,7 +23,8 @@ const Home = (props) => {
             <img className="homelogo" src={transparent} alt="" />
           </div>
           <div className="col-s6 homewords">
-            <p>Risk free trading</p>
+            <p>Risk free trading made easy.</p>
+            <p>Get started today!</p>
             <div className="homebuttons">
               <Link to="/login">
                 <button className="homelogin">Log in</button>

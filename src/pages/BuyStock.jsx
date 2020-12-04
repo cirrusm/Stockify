@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar";
 class BuyStock extends Component {
   state = {
     ticker: this.props.match.params["ticker"],
-    shares: 1,
+    shares: "",
     price: Number(this.props.location.currentPrice),
     total: Number(this.props.location.currentPrice),
   };
@@ -37,6 +37,18 @@ class BuyStock extends Component {
         this.props.history.push("/portfolio");
       });
   };
+
+  word = () => {
+    if (this.state.shares == 1) {
+      return `${this.state.shares} share will cost: ${this.state.total}`;
+    } else if (this.state.shares == "") {
+      return "Enter how many shares you would like";
+    } else if ((this.state.shares != 1) & (this.state.total < 50000)) {
+      return `${this.state.shares} shares will cost: ${this.state.total}`;
+    } else {
+      return `You dont have enough to buy ${this.state.shares} shares`;
+    }
+  };
   render() {
     let price = Number(this.props.location.currentPrice);
     let upper = this.state.ticker.toUpperCase();
@@ -60,7 +72,7 @@ class BuyStock extends Component {
               <MuiThemeProvider>
                 <TextField
                   type="shares"
-                  floatingLabelText="Shares"
+                  floatingLabelText="# of Shares"
                   onChange={(event, newValue) =>
                     this.setState({
                       shares: newValue,
@@ -75,10 +87,7 @@ class BuyStock extends Component {
                   onClick={(event) => this.handleSubmit(event)}
                 />
 
-                <h2 className="totalbuycost">
-                  Total cost {this.state.shares} <br></br>
-                  <b> {this.state.total} </b>
-                </h2>
+                <h2 className="totalbuycost">{this.word()}</h2>
               </MuiThemeProvider>
             </div>
           </div>

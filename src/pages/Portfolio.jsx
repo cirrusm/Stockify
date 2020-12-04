@@ -57,17 +57,17 @@ class Portfolio extends Component {
           <h2>Cirrus's Portfolio</h2>{" "}
           <h2>
             {" "}
-            {this.state.loadingbalance
+            {/* {this.state.loadingbalance
               ? "Loading your balance... "
-              : "Current Balance: $" + this.state.balance}
+              : "Current Balance: $" + this.state.balance} */}
           </h2>
           <div className="row portfoliochart">
-            <div className="col-1">sell</div>
+            <div className="col-1"></div>
             <div className="col">Ticker</div>
             <div className="col">Shares</div>
             <div className="col">Current Value</div>
             <div className="col">Purchased For</div>
-            <div className="col">Total Gain</div>
+            <div className="col">Profit/Loss</div>
           </div>
           <div className="tablevalues">{this.renderStocks()}</div>
         </div>

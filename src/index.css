@@ -313,11 +313,14 @@ input {
 
 .totalbuycost {
   margin-top: 30px;
+  margin-right: 20px;
 }
 
 .buyheader {
   margin-left: 12%;
   margin-right: 6%;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .logo {
@@ -456,4 +459,19 @@ input {
 
 .underline {
   text-decoration: underline;
+}
+
+.navitemsearch {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+#src {
+  margin-top: 20px;
+}
+
+#moveleft {
+  margin-right: 170px;
 }

@@ -4,9 +4,12 @@ import Home from "../pages/Home";
 import StockContainer from "./StockContainer";
 import image from "../images/logo1.png";
 import transparent from "../images/transparent.png";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import TextField from "material-ui/TextField";
 class NavBar extends Component {
   state = {
     balance: "",
+    search: "",
   };
 
   componentDidMount() {}
@@ -29,6 +32,27 @@ class NavBar extends Component {
         <Link className="navitem" to="/">
           Log Out
         </Link>
+        <div className="navitemsearch" id="search">
+          <MuiThemeProvider>
+            <TextField
+              type="email"
+              floatingLabelText="Find Stock by Ticker Symbol"
+              onChange={(event, newValue) =>
+                this.setState({ search: newValue })
+              }
+            />
+            <Link to={`/stocks/${this.state.search}`}>
+              <button
+                id="src"
+                className="btn btn-primary stockbutton searchbutton"
+                type="submit"
+                value="SEARCH"
+              >
+                Search
+              </button>
+            </Link>
+          </MuiThemeProvider>
+        </div>
       </nav>
     );
   }

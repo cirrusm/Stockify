@@ -57,33 +57,13 @@ class Dashboard extends Component {
     return (
       <div>
         <NavBar />
-        <div className="searchcontainer">
-          <MuiThemeProvider>
-            <TextField
-              type="email"
-              floatingLabelText="Search By Ticker"
-              onChange={(event, newValue) =>
-                this.setState({ search: newValue })
-              }
-            />
-            <Link to={`/stocks/${this.state.search}`}>
-              <button
-                id="src"
-                className="btn btn-primary stockbutton searchbutton"
-                type="submit"
-                value="SEARCH"
-              >
-                Search
-              </button>
-            </Link>
-          </MuiThemeProvider>
-        </div>
+
         <div className="row"></div>
-        <h1 className="highvolume">High Volume Stocks</h1>
+        <h1 className="highvolume">Companies In the News</h1>
         <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
-            <StockContainer ticker="aapl" />
+            <StockContainer ticker="fb" />
           </div>
           <div className="col-md-4">
             {" "}
@@ -94,7 +74,7 @@ class Dashboard extends Component {
             <StockContainer ticker="tsla" />
           </div>
         </div>
-        <h1 className="popular">Today's Most Traded </h1>
+        <h1 className="popular">Today's Most Popular </h1>
         <div className="row cardcontainer">
           <div className="col-md-4 ">
             <StockCard stock={this.state.mover1} />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 class StockCheck extends Component {
   state = {
     stock: {},
@@ -76,16 +76,20 @@ class StockCheck extends Component {
         <div className="row stocklisting">
           <div className="col-1">
             {" "}
-            <button className="btn-primary" onClick={this.handleSell}>
-              Sell
-            </button>
+            <Link to="/stocks">
+              <button className="btn-primary" onClick={this.handleSell}>
+                Sell
+              </button>
+            </Link>
           </div>
-          <div className="col">{this.props.stock.ticker}</div>
+
+          <div className="col">{this.props.stock.ticker.toUpperCase()}</div>
+
           <div className="col">{this.props.stock.shares}</div>
-          <div className="col">{this.state.currentPrice}</div>
-          <div className="col">{this.props.stock.price}</div>
+          <div className="col">${this.state.currentPrice}</div>
+          <div className="col">${this.props.stock.price}</div>
           <div style={this.color()} className="col">
-            {this.plus()} {this.calculateDif()} ({this.percentChange()})
+            {this.plus()} ${this.calculateDif()} ({this.percentChange()}%)
           </div>
         </div>
       </>

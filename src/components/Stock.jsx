@@ -78,6 +78,7 @@ class Stock extends Component {
             oldprice: this.props.oldprice,
           }}
           className="btn btn-primary stockbutton"
+          id="moveleft"
         >
           View
         </Link>
