@@ -76,7 +76,7 @@ class BuyStock extends Component {
                 />
 
                 <h2 className="totalbuycost">
-                  Total cost for {this.state.shares} <br></br>
+                  Total cost {this.state.shares} <br></br>
                   <b> {this.state.total} </b>
                 </h2>
               </MuiThemeProvider>

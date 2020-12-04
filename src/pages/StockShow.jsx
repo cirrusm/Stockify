@@ -302,29 +302,30 @@ class StockShow extends Component {
             <div className="keyinfo">
               <div className="row">
                 <div className="col top">
-                  Market Cap <br /> <br />{" "}
+                  <span className="underline"> Market Cap </span>
+                  <br /> <br />{" "}
                   <span className="info">{this.state.marketCap}</span>
                 </div>
                 <div className="col top">
-                  PE Ratio <br /> <br />{" "}
+                  <span className="underline"> PE Ratio </span> <br /> <br />{" "}
                   <span className="info">{this.state.peRatio}</span>{" "}
                 </div>
                 <div className="col top">
-                  52 week High <br />
+                  <span className="underline">52 week High </span> <br />
                   <br /> <span className="info">{this.state.high}</span>
                 </div>
               </div>
               <div className="row lower">
-                <div className="col">
-                  52 week Low <br />
+                <div className="col bottom ">
+                  <span className="underline">52 week Low</span> <br />
                   <br /> <span className="info">{this.state.low}</span>
                 </div>
-                <div className="col">
-                  YTD Change <br />
+                <div className="col bottom">
+                  <span className="underline">YTD Change</span> <br />
                   <br /> <span className="info">{updatedYTD}</span>
                 </div>
-                <div className="col">
-                  Volume <br />
+                <div className="col bottom">
+                  <span className="underline">Volume</span> <br />
                   <br /> <span className="info">{this.state.volume}</span>
                 </div>
               </div>

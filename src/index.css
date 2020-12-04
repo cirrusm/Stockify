@@ -109,8 +109,9 @@ body {
 }
 
 .top {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   margin-top: 25px;
+  font-size: 28px;
 }
 
 .stockarticle {
@@ -210,9 +211,9 @@ input {
   margin-right: 35px;
   margin-left: 35px;
   margin-top: 30px;
-  height: 50vh;
-  min-height: 300px;
-  max-height: 300px;
+  height: 600px;
+  min-height: 400px;
+  max-height: 425px;
 }
 
 .lower {
@@ -444,4 +445,15 @@ input {
 
 .width {
   width: 120px;
+}
+
+.bottom {
+  font-size: 28px;
+}
+.info {
+  font-size: 22px;
+}
+
+.underline {
+  text-decoration: underline;
 }

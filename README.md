@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Stockify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Stockify is a stock market simulation website that allows its users to test their trading skills risk free. By using real time stock prices, Stockify will give users a taste of what trading in the real markets is like.
 
-In the project directory, you can run:
+## User Story
 
-### `npm start`
+- The Landing page will prompt the user to select the log in or register buttons which will redirect them to the respective page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- After registering and signing in, the user will be redirected to the Dashboard page, where they will be able to see the most popular stocks of the day. At the top, 3 of the most traded stocks of the day will be displayed along with a daily chart and price for each.
+  At the bottom of the page, nine stocks that have relatively high trading volumes compared to others will be displayed. These will show the price and the percent change of price for the day.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- The dashboard will have a search bar that will allow for the user to search for a specific stock by using its ticker symbol. The user can also navigate to one of the stocks being displayed on the stock page by either clicking on the card, or selecting the "View" button on the card
 
-### `npm test`
+- Each stocks show page will display a large graph of the price movement for the day. There will be three buttons below the graph that will allow the user to change the graph to display yearly, monthly, and daily data
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- On the bottom half of the show page, there will be a section that displays other key information about the stock such as Price Earnings ratio, Average volume, 52 week highs/lows, and other relevant information. To the right of the key information, 3 articles that relate to the stock will be displayed with a picture, title and short intro. Users will be able to navigate to each article by clicking on the card that they are displayed on.
 
-### `npm run build`
+- To the right of the graph on a stocks page, there will be a box that shows the full name of the stock, its ticker symbol, its change in price (will display yearly, monthly, or daily depending on what mode the graph is in), the current price of the stock along with a "buy this stock" button. This button will redirect the user to a Buy Stock page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- On the buy stock page, the user will be asked how many shares of the stock they would like to buy. A total cost of purchase will be displayed and update as the user types in the amount of shares they would like to purchase. Once the user clicks "buy" they will be redirected to their portfolio page where they will be able to view all of the purchases that they have made on their account.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The portfolio page will display each instance of a purchase that the user that is signed in has made. The number of shares, purchase price, current price, gain/loss and a sell button will be displayed for each instance of a purchase. If a user is happy with their gains, or wants to cut their losses, they can select the sell button to get rid of their shares. The amount that the shares are worth will be added to the users total balance the page will re-render.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies and APIs used
 
-### `npm run eject`
+### Technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- HTML
+- CSS
+- Javascript
+- Mongoose
+- Express
+- Node.js
+- React
+- Plotly
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### APIs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- AlphaVantage - Daily Prices
+- IEX Cloud - Weekly, Yearly, Logos
+- Aylien - News
+- Polygon - Backup prices, Single day prices
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## WireFrames
 
-## Learn More
+## Home Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Home](assets/home.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Dashboard
 
-### Code Splitting
+![Dashboard](assets/dashboard.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Stock Page
 
-### Analyzing the Bundle Size
+![Dashboard](assets/show.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Register
 
-### Making a Progressive Web App
+![Register](assets/register.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Login
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Login](assets/login.png)
