@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 class StockCard extends Component {
   state = {
     logo: "",
+    loader: true,
   };
 
   componentDidMount() {
@@ -20,9 +21,11 @@ class StockCard extends Component {
       .then((data) =>
         this.setState({
           logo: data["url"],
+          loader: false,
         })
       );
   };
+
   render() {
     let price = parseFloat(this.props.stock["latestPrice"]).toFixed(2);
     let change = parseFloat(this.props.stock["changePercent"] * 100).toFixed(2);
@@ -30,6 +33,8 @@ class StockCard extends Component {
       <Link className="link" to={`/stocks/${this.props.stock.symbol}`}>
         <div className="row stockcard justify-content-between">
           <div className="col-s2">
+            {this.state.loader ? "Loading image" : ""}
+            {this.fetchLogo()}
             <img
               className="logodashboard"
               width="50px"
