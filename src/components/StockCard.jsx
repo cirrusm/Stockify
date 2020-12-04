@@ -12,6 +12,15 @@ class StockCard extends Component {
   componentDidMount() {
     this.fetchLogo();
   }
+
+  color = () => {
+    if (this.props.stock.changePercent > 0) {
+      return { color: "green" };
+    } else {
+      return { color: "red" };
+    }
+  };
+
   fetchLogo = () => {
     if (this.state.loader == false) {
       return;
@@ -51,7 +60,10 @@ class StockCard extends Component {
           </div>
           <div className="col-s5 numbers">
             <h5>${price}</h5>
-            <h6 className="gain">+{change}%</h6>
+            <h6 style={this.color()} className="gain">
+              {this.props.stock.changePercent > 0 ? "+" : ""}
+              {change}%
+            </h6>
           </div>
         </div>
       </Link>

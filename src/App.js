@@ -5,12 +5,7 @@ import routes from "./config/routes";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      {routes}
-    </div>
-  );
+  return <div className="App">{routes}</div>;
 }
 
 export default App;

@@ -3,6 +3,8 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import Image from "../images/login.png";
+import { Link } from "react-router-dom";
+import image from "../images/logo1.png";
 // import axios from 'axios';
 
 class Login extends Component {
@@ -20,6 +22,12 @@ class Login extends Component {
   render() {
     return (
       <div>
+        <nav className="d-flex justify-content-around" id="opace">
+          <Link className="left " to="/">
+            {" "}
+            <img className="logo" width="190px" src={image} alt="" />
+          </Link>
+        </nav>
         <MuiThemeProvider>
           <div className="login">
             <div className="row login-container">
@@ -44,12 +52,9 @@ class Login extends Component {
                   }
                 />
                 <br />
-                <RaisedButton
-                  label="Submit"
-                  primary={true}
-                  style={style}
-                  onClick={(event) => this.handleClick(event)}
-                />
+                <Link to="/stocks">
+                  <RaisedButton label="Submit" primary={true} style={style} />
+                </Link>
               </div>
             </div>
           </div>

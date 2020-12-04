@@ -3,6 +3,7 @@ import Stock from "../components/Stock";
 import StockContainer from "../components/StockContainer";
 import Plot from "react-plotly.js";
 import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 class StockShow extends Component {
   constructor(props) {
@@ -203,6 +204,7 @@ class StockShow extends Component {
     let updatedYTD = parseFloat(this.state.YTD * 100).toFixed(2) + "%";
     return (
       <>
+        <NavBar />
         <div className="row">
           <div className="col-8 chartshowcard">
             <Plot

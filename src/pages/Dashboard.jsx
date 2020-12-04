@@ -6,6 +6,7 @@ import TextField from "material-ui/TextField";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 class Dashboard extends Component {
   state = {
@@ -32,21 +33,21 @@ class Dashboard extends Component {
   //MAKE API CALL TO GET TOP 3 GAINERS AND TOP 10 POPULAR FROM IEX
   fetchMovers = () => {
     let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
-    let API_Call = `https://cloud.iexapis.com/stable/stock/market/list/gainers?token=${API_KEY}`;
+    let API_Call = `https://cloud.iexapis.com/stable/stock/market/list/mostactive?token=${API_KEY}`;
     fetch(API_Call)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         this.setState({
-          mover1: data[1],
-          mover2: data[2],
-          mover3: data[3],
-          mover4: data[4],
-          mover5: data[5],
-          mover6: data[6],
-          mover7: data[7],
-          mover8: data[8],
-          mover9: data[9],
+          mover1: data[0],
+          mover2: data[1],
+          mover3: data[2],
+          mover4: data[3],
+          mover5: data[4],
+          mover6: data[5],
+          mover7: data[6],
+          mover8: data[7],
+          mover9: data[8],
         });
       });
   };
@@ -55,6 +56,7 @@ class Dashboard extends Component {
     console.log("render");
     return (
       <div>
+        <NavBar />
         <div className="searchcontainer">
           <MuiThemeProvider>
             <TextField
@@ -102,9 +104,9 @@ class Dashboard extends Component {
             <StockCard stock={this.state.mover6} />
           </div>
           <div className="col-md-4">
-            <StockCard stock={this.state.mover6} />
             <StockCard stock={this.state.mover7} />
             <StockCard stock={this.state.mover8} />
+            <StockCard stock={this.state.mover9} />
           </div>
         </div>
       </div>

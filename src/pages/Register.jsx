@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+import { Link } from "react-router-dom";
+import image from "../images/logo1.png";
 // import axios from 'axios';
 
 class Register extends Component {
@@ -19,6 +21,12 @@ class Register extends Component {
   render() {
     return (
       <div>
+        <nav className="d-flex justify-content-around" id="opace">
+          <Link className="left " to="/">
+            {" "}
+            <img className="logo" width="190px" src={image} alt="" />
+          </Link>
+        </nav>
         <MuiThemeProvider>
           <div className="register">
             <div className="row">

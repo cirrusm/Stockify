@@ -54,6 +54,14 @@ class StockCheck extends Component {
     }
   };
 
+  handleSell = () => {
+    fetch(`http://localhost:5000/api/stocks/${this.props.stock._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
+
   plus = () => {
     if (this.state.currentPrice > this.props.stock.price) {
       return "+";
@@ -68,7 +76,9 @@ class StockCheck extends Component {
         <div className="row stocklisting">
           <div className="col-1">
             {" "}
-            <button className="btn-primary">Sell</button>
+            <button className="btn-primary" onClick={this.handleSell}>
+              Sell
+            </button>
           </div>
           <div className="col">{this.props.stock.ticker}</div>
           <div className="col">{this.props.stock.shares}</div>

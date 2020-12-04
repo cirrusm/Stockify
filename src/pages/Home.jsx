@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import background from "../images/background.png";
+import logo from "../images/Logo2.png";
+import { Link } from "react-router-dom";
+import transparent from "../images/transparent.png";
 const Home = (props) => {
   fetch("http://localhost:5000/api/stocks/")
     .then((response) => {
@@ -15,7 +18,22 @@ const Home = (props) => {
         <img className="background" src={background} alt="" />
       </div>
       <div className="second">
-        <h1 className="text-center"></h1>
+        <div className="row logocontainer">
+          <div className="col-s6">
+            <img className="homelogo" src={transparent} alt="" />
+          </div>
+          <div className="col-s6 homewords">
+            <p>Risk free trading</p>
+            <div className="homebuttons">
+              <Link to="/login">
+                <button className="homelogin">Log in</button>
+              </Link>
+              <Link to="/register">
+                <button className="homeregister">Register</button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

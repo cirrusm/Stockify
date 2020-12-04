@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
+import NavBar from "../components/NavBar";
 
 class BuyStock extends Component {
   state = {
@@ -40,45 +41,49 @@ class BuyStock extends Component {
     let price = Number(this.props.location.currentPrice);
     let upper = this.state.ticker.toUpperCase();
     return (
-      <div className="buycontainer">
-        <div className="row buyheader">
-          {" "}
-          <h3>
-            How many shares of {this.props.location.name} would you like to buy?
-            {this.props.currentPrice}?
-          </h3>
-        </div>
-        <div className="row">
-          <div className="col">
-            <img className="buylogo" src={this.props.location.logo} alt="" />
+      <>
+        <NavBar />
+        <div className="buycontainer">
+          <div className="row buyheader">
+            {" "}
+            <h3>
+              How many shares of {this.props.location.name} would you like to
+              buy?
+              {this.props.currentPrice}?
+            </h3>
           </div>
-          <div className="col">
-            <MuiThemeProvider>
-              <TextField
-                type="shares"
-                floatingLabelText="Shares"
-                onChange={(event, newValue) =>
-                  this.setState({
-                    shares: newValue,
-                    total: parseFloat(newValue * this.state.price).toFixed(2),
-                  })
-                }
-              />
-              <RaisedButton
-                label="Buy"
-                primary={true}
-                style={style}
-                onClick={(event) => this.handleSubmit(event)}
-              />
+          <div className="row">
+            <div className="col">
+              <img className="buylogo" src={this.props.location.logo} alt="" />
+            </div>
+            <div className="col">
+              <MuiThemeProvider>
+                <TextField
+                  type="shares"
+                  floatingLabelText="Shares"
+                  onChange={(event, newValue) =>
+                    this.setState({
+                      shares: newValue,
+                      total: parseFloat(newValue * this.state.price).toFixed(2),
+                    })
+                  }
+                />
+                <RaisedButton
+                  label="Buy"
+                  primary={true}
+                  style={style}
+                  onClick={(event) => this.handleSubmit(event)}
+                />
 
-              <h2 className="totalbuycost">
-                Total cost for {this.state.shares} <br></br>
-                <b> {this.state.total} </b>
-              </h2>
-            </MuiThemeProvider>
+                <h2 className="totalbuycost">
+                  Total cost for {this.state.shares} <br></br>
+                  <b> {this.state.total} </b>
+                </h2>
+              </MuiThemeProvider>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
