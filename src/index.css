@@ -351,3 +351,13 @@ input {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+.searchbutton {
+  width: 90px;
+  margin-left: 20px;
+}
+
+.searchcontainer {
+  display: relative;
+  margin-right: 1100px;
+}

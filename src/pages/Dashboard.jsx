@@ -4,13 +4,14 @@ import StockCard from "../components/StockCard";
 import "../index.css";
 import TextField from "material-ui/TextField";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import RaisedButton from "material-ui/RaisedButton";
 import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   state = {
-    gainer1: "",
-    gainer2: "",
-    gainer3: "",
+    popular: ["dkng", "aapl", "nio", "msft", "amzn", "amd", "dis"],
+    popular2: ["tsla", "aal", "spce", "fb"],
+    popular3: ["oxy", "crm", "nflx", "f"],
     mover1: "",
     mover2: "",
     mover3: "",
@@ -54,18 +55,26 @@ class Dashboard extends Component {
     console.log("render");
     return (
       <div>
-        <MuiThemeProvider>
-          <TextField
-            type="email"
-            floatingLabelText="Search By Ticker"
-            onChange={(event, newValue) => this.setState({ search: newValue })}
-          />
-          <Link to={`/stocks/${this.state.search}`}>
-            <input type="submit" value="search" />
-          </Link>
-        </MuiThemeProvider>
+        <div className="searchcontainer">
+          <MuiThemeProvider>
+            <TextField
+              type="email"
+              floatingLabelText="Search By Ticker"
+              onChange={(event, newValue) =>
+                this.setState({ search: newValue })
+              }
+            />
+            <Link to={`/stocks/${this.state.search}`}>
+              <input
+                className="btn btn-primary stockbutton searchbutton"
+                type="submit"
+                value="SEARCH"
+              ></input>
+            </Link>
+          </MuiThemeProvider>
+        </div>
         <div className="row"></div>
-        <h1>Gainer Section</h1>
+        <h1>High Volume Stocks</h1>
         <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
@@ -77,7 +86,7 @@ class Dashboard extends Component {
           </div>
           <div className="col-md-4">
             {" "}
-            <StockContainer ticker="msft" />
+            <StockContainer ticker="tsla" />
           </div>
         </div>
         <h2 className="popular">Todays Biggest Gainers</h2>

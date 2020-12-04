@@ -13,6 +13,9 @@ class StockCard extends Component {
     this.fetchLogo();
   }
   fetchLogo = () => {
+    if (this.state.loader == false) {
+      return;
+    }
     let ticker = this.props.stock.symbol;
     let API_KEY = "pk_306915c8b8c04bf8bb396ac0e15cd378";
     let API_Call = `https://cloud.iexapis.com/stable/stock/${ticker}/logo?token=${API_KEY}`;
