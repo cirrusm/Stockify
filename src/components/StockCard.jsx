@@ -55,7 +55,9 @@ class StockCard extends Component {
             />
           </div>
           <div className="col-s5 words">
-            <h6 className="text-center">{this.props.stock["symbol"]}</h6>
+            <h6 className="text-center symbolcard">
+              {this.props.stock["symbol"]}
+            </h6>
             <h6 className="text-grey">{this.props.stock["companyName"]}</h6>
           </div>
           <div className="col-s5 numbers">

@@ -240,21 +240,21 @@ class StockShow extends Component {
                 title: `<b>${upper}</b> \n ${this.state.price}`,
               }}
             />
-            <div className="chartbuttons">
+            <div className="chartbuttons ">
               <button
-                className="chartbutton btn btn-primary"
+                className="stockbutton width btn btn-primary"
                 onClick={this.handleClick}
               >
                 Last Month
               </button>
               <button
-                className="chartbutton btn btn-primary"
+                className="stockbutton width btn btn-primary"
                 onClick={this.handleClickYearly}
               >
                 Last Year
               </button>
               <button
-                className="chartbutton btn btn-primary"
+                className="stockbutton width btn btn-primary"
                 onClick={this.handleClickDaily}
               >
                 Last Day
@@ -291,7 +291,7 @@ class StockShow extends Component {
                   name: this.state.name,
                 }}
               >
-                <div className="p-1 btn btn-primary">Buy {upper}</div>
+                <div className="p-1 btn stockbutton width">Buy {upper}</div>
               </Link>
             </div>
           </div>

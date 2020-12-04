@@ -67,16 +67,19 @@ class Dashboard extends Component {
               }
             />
             <Link to={`/stocks/${this.state.search}`}>
-              <input
+              <button
+                id="src"
                 className="btn btn-primary stockbutton searchbutton"
                 type="submit"
                 value="SEARCH"
-              ></input>
+              >
+                Search
+              </button>
             </Link>
           </MuiThemeProvider>
         </div>
         <div className="row"></div>
-        <h1>High Volume Stocks</h1>
+        <h1 className="highvolume">High Volume Stocks</h1>
         <div className="row graphcontainer">
           <div className="col-md-4">
             {" "}
@@ -91,7 +94,7 @@ class Dashboard extends Component {
             <StockContainer ticker="tsla" />
           </div>
         </div>
-        <h2 className="popular">Todays Biggest Gainers</h2>
+        <h1 className="popular">Today's Most Traded </h1>
         <div className="row cardcontainer">
           <div className="col-md-4 ">
             <StockCard stock={this.state.mover1} />
