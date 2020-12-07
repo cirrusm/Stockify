@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Home from "../pages/Home";
-import StockContainer from "./StockContainer";
 import image from "../images/logo1.png";
-import transparent from "../images/transparent.png";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import TextField from "material-ui/TextField";
 class NavBar extends Component {
