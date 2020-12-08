@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import background from "../images/background.png";
-import logo from "../images/Logo2.png";
 import { Link } from "react-router-dom";
 import transparent from "../images/transparent.png";
 const Home = (props) => {

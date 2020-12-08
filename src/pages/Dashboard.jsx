@@ -2,17 +2,10 @@ import React, { Component } from "react";
 import StockContainer from "../components/StockContainer";
 import StockCard from "../components/StockCard";
 import "../index.css";
-import TextField from "material-ui/TextField";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import RaisedButton from "material-ui/RaisedButton";
-import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 class Dashboard extends Component {
   state = {
-    popular: ["dkng", "aapl", "nio", "msft", "amzn", "amd", "dis"],
-    popular2: ["tsla", "aal", "spce", "fb"],
-    popular3: ["oxy", "crm", "nflx", "f"],
     mover1: "",
     mover2: "",
     mover3: "",

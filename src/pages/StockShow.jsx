@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Stock from "../components/Stock";
-import StockContainer from "../components/StockContainer";
 import Plot from "react-plotly.js";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
