@@ -61,7 +61,7 @@ class BuyStock extends Component {
             <h3>
               How many shares of {this.props.location.name} would you like to
               buy?
-              {this.props.currentPrice}?
+              {this.props.currentPrice}
             </h3>
           </div>
           <div className="row">
