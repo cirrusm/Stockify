@@ -37,10 +37,6 @@ class Portfolio extends Component {
           loadingbalance: false,
         });
       });
-
-    //   this.setState({
-    //     stocks: data.stocks,
-    //   });
   };
   renderStocks() {
     return this.state.stocks.map((stock, index) => {
