@@ -10,7 +10,7 @@ class Portfolio extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:5000/api/stocks/")
+    fetch("https://calm-tor-65502.herokuapp.com/api/stocks")
       .then((response) => {
         return response.json();
       })
@@ -26,7 +26,9 @@ class Portfolio extends Component {
     if (this.state.loadingbalance == false) {
       return "";
     }
-    fetch("http://localhost:5000/api/users/5fc84bfbc6af2d1b5e507cb7")
+    fetch(
+      "https://calm-tor-65502.herokuapp.com/api/users/5fc84bfbc6af2d1b5e507cb7"
+    )
       .then((response) => {
         return response.json();
       })

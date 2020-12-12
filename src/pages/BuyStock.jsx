@@ -23,7 +23,7 @@ class BuyStock extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/api/stocks/", {
+    fetch("https://calm-tor-65502.herokuapp.com/api/stocks/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(this.state),

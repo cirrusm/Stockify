@@ -32,15 +32,12 @@ class StockShow extends Component {
     this.fetchInfo();
     this.fetchLogo();
     this.fetchStock();
-    console.log(this.state.stockChartYValues);
   }
 
   color = () => {
     if (this.state.price > this.state.oldprice) {
-      console.log(this.state.oldprice);
       return "green";
     } else {
-      console.log(this.state.oldprice);
       return "red";
     }
   };
@@ -87,7 +84,6 @@ class StockShow extends Component {
           news: data,
         })
       );
-    console.log(this.state.news);
   };
 
   fetchStock = () => {
