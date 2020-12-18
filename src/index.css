@@ -385,17 +385,50 @@ input {
 }
 
 .homelogo {
-  width: 1000px;
+  position: absolute;
+  margin-top: 40vh;
+  width: 800px;
   margin: 0 auto;
-  height: 900px;
+  height: 700px;
 }
 
 .logocontainer {
   width: 100vw;
 }
 
+@media only screen and (max-width: 900px){
+.background {
+ display:none; 
+}
 .homewords {
-  margin-top: 40vh;
+  margin: 0 auto;
+  margin-left: 0px;
+  margin-top: 0px;
+  
+}
+
+.homelogo {
+  width: 450px;
+  height: 450px;
+  margin-top: 10vh;
+}
+.homewords p {
+  display: none;
+}
+
+.homebuttons {
+  position: relative;
+  top: 200px;
+  right: 20px;
+}
+
+.homeregister {
+  display: none;
+}
+}
+.homewords {
+  margin-left: 50vw;
+  margin-top: 30vh;
   font-size: 40px;
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

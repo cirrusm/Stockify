@@ -3,13 +3,7 @@ import background from "../images/background.png";
 import { Link } from "react-router-dom";
 import transparent from "../images/transparent.png";
 const Home = (props) => {
-  fetch("http://localhost:5000/api/stocks/")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+  
 
   return (
     <div className="home">
@@ -21,7 +15,7 @@ const Home = (props) => {
           <div className="col-s6">
             <img className="homelogo" src={transparent} alt="" />
           </div>
-          <div className="col-s6 homewords">
+          <div className="homewords">
             <p>Risk free trading made easy.</p>
             <p>Get started today!</p>
             <div className="homebuttons">
