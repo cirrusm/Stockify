@@ -506,5 +506,5 @@ input {
 }
 
 #moveleft {
-  margin-right: 170px;
+  margin-right: inherit
 }
