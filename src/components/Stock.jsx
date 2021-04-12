@@ -8,6 +8,7 @@ class Stock extends Component {
     stockChartYValues: [],
   };
 
+  //not neeeded
   // componentDidMount() {
   //   // this.fetchStock();
   //   console.log("mounted");
