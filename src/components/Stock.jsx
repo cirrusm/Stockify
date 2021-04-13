@@ -11,7 +11,7 @@ class Stock extends Component {
   //not neeeded
   // componentDidMount() {
   //   // this.fetchStock();
-  //   console.log("mounted");
+  //   console.log("mounted""");
   // }
 
   // componentDidUpdate() {
